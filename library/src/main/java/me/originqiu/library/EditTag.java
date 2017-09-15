@@ -20,10 +20,8 @@ package me.originqiu.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +33,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -130,6 +127,10 @@ public class EditTag extends FrameLayout
         editText.setOnKeyListener(this);
     }
 
+    public EditText getEditText(){
+        return editText;
+    }
+
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         boolean isHandle = false;
@@ -199,8 +200,9 @@ public class EditTag extends FrameLayout
                 view.setBackgroundDrawable(getDrawableByResId(deleteModeBgRes));
             } else {
                 if (lastSelectTagView.equals(view)) {
-                    lastSelectTagView.setBackgroundDrawable(defaultTagBg);
-                    lastSelectTagView = null;
+//                    lastSelectTagView.setBackgroundDrawable(defaultTagBg);
+//                    lastSelectTagView = null;
+                    removeSelectedTag();
                 } else {
                     lastSelectTagView.setBackgroundDrawable(defaultTagBg);
                     lastSelectTagView = (TextView) view;
